@@ -1,0 +1,15 @@
+1.  This basic structure lets people create a pixel
+that can only have the appropriate color values,
+then inserts it into the correct position in a matrix
+with a pre-determined height and width.
+
+2.  To find a specific element within a ruby context I would
+probably recommend a "Pixel.where(...)" scenario using the
+pertinent information to find what you're looking for.
+
+3.  These are pretty common structures, especially the line
+example, so they can apply in many contexts.  Basically,
+anything where you have a group of things that appear in an
+order and can be removed from any place in the order.  The
+pixels might be less specifically applicable, but the two-
+dimensional array will be a useful concept.
