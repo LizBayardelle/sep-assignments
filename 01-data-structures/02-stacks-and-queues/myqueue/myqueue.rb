@@ -15,9 +15,9 @@ class MyQueue
   end
 
   def dequeue
-    @queue = @queue.drop(1)
-    @head = @queue[0]
-    @tail = @queue[@queue.count]
+    @head = @queue[1]
+    @tail = @queue[@queue.count - 1]
+    @queue = @queue.delete_at(1)
   end
 
   def empty?
