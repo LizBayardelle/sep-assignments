@@ -5,11 +5,13 @@ class HashClass
   end
 
   def []=(key, value)
-    if @items[index(key, size)] && @items[index(key, size)].value != value
+    while @items[index(key, size)] && @items[index(key, size)].value != value
       resize
+      if @items[index(key, size)] && @items[index(key, size)].key == key
+        break
+      end
     end
     @items[index(key, size)] = HashItem.new(key, value)
-    print index(key,size)
   end
 
 
