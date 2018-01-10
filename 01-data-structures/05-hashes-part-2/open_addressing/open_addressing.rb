@@ -14,14 +14,16 @@ class OpenAddressing
 
   def [](key)
     n = index(key, size)
-    while n < @items.count
-      if key == @items[n].key
-        return @items[n].value
-      else
-        n += 1
-      end
+    count = 0
+    while @items[n].key != key && count < size
+      n = (n + 1) % size
+      count += 1
     end
-    nil
+    if @items[n].key == key
+      return @items[n].value
+    else
+      nil
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -34,18 +36,24 @@ class OpenAddressing
   # Given an index, find the next open index in @items
   def next_open_index(index)
     n = index
-    while n < @items.count
-      print n
-      print @items[n]
-      print "\n"
-      unless @items[n]
-        print n
-        print "returns"
-        return n
-      else
-        n += 1
-      end
-    end
+    count = 0
+    found = false
+    while !found && count < size
+     if @items[index] == nil
+       found = true
+       return index
+     else
+       index = (index + 1) % size
+       count += 1
+     end
+   end
+    # while @items[n].key != key && n < @items.count
+    #   print n
+    #   if @items[n] == nil
+    #     return n
+    #   end
+    #   n += 1
+    # end
     return -1
   end
 
